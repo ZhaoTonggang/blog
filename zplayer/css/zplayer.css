@@ -197,11 +197,11 @@
 .zplayer .zplayer-menu-bars {
   float: right;
   color: #6e6e6e;
-  font-size: 14px;
-  line-height: 19px;
+  font-size: 15px;
+  line-height: 20px;
   cursor: pointer;
   position: absolute;
-  top: 7px;
+  top: 5px;
   right: 5px;
 }
 
@@ -242,7 +242,7 @@
   padding-left: 17px;
   border-left: 3px solid #3da0ff;
   color: #716e6e;
-  font-weight: 700
+  font-weight: bold
 }
 
 .zplayer .display-none {
@@ -292,7 +292,7 @@
   box-sizing: border-box;
   transition: all 1s ease;
   margin-left: 60px;
-  padding: 4px 5px 0 10px;
+  padding: 5px 5px 0 5px;
   height: 60px
 }
 
@@ -326,6 +326,10 @@
 
 .zplayer .zplayer-info .zplayer-controller {
   position: relative
+}
+
+.zplayer .zplayer-info .zplayer-controller .zplayer-bar-wrap {
+  padding: 0 5px;
 }
 
 .zplayer .zplayer-info .zplayer-controller .zplayer-bar-wrap .zplayer-bar {
@@ -382,13 +386,14 @@
 .zplayer .zplayer-info .zplayer-controller .zplayer-time {
   margin-top: 10px;
   color: #999;
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .zplayer .zplayer-info .zplayer-controller .zplayer-time .z-icon {
   margin-left: 5px;
-  width: 14px;
-  font-size: 14px;
+  width: 15px;
+  font-size: 15px;
 }
 
 .zplayer .zplayer-info .zplayer-controller .zplayer-volume-wrap {
@@ -404,7 +409,6 @@
   position: absolute;
   right: -5px;
   bottom: 17px;
-  /* z-index: 99; */
   display: none;
   width: 25px;
   height: 40px
@@ -443,7 +447,6 @@
   color: #666;
 }
 
-.zplayer .zplayer-list-btn:hover,
 .zplayer .zplayer-menu-bars i:hover,
 .zplayer .zplayer-menu-volume i:hover {
   color: #000
@@ -461,7 +464,6 @@
   position: relative;
   display: inline-block;
   margin-top: -3px;
-  /* margin-left: 4px; */
   margin-right: 5px;
   width: 40px;
   height: 2px;
@@ -510,7 +512,6 @@
 .zplayer-lrc:after,
 .zplayer .zplayer-lrc:before {
   position: absolute;
-  /* z-index: 1; */
   display: block;
   overflow: hidden;
   content: ' ';
@@ -529,6 +530,7 @@
   height: 20px !important;
   overflow: hidden;
   text-shadow: 1px 1px 2px #000;
+  cursor: default;
 }
 
 .zplayer-fixed .zplayer-lrc p {
