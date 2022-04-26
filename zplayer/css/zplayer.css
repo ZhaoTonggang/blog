@@ -175,26 +175,23 @@
 .zplayer .zplayer-content {
   float: left;
   width: 100%;
-  /* border-top: 1px solid #ededed; */
-  /* border-bottom: 1px solid #ededed; */
-  border: 1px solid #ededed;
   background: #fff;
 }
 
 .zplayer .ss-btn {
   float: right;
   width: 20px;
-  height: 62px;
+  height: 60px;
   background: #3da0fd none repeat scroll 0 0;
   cursor: pointer;
 }
 
 .zplayer .ss-btn i {
-  margin-top: 1px;
-  padding: 0 4px;
+  margin-top: 3px;
+  padding: 0 5px;
   color: #fff;
-  font-size: 14px;
-  line-height: 62px
+  font-size: 15px;
+  line-height: 60px
 }
 
 .zplayer .zplayer-menu-bars {
@@ -213,11 +210,11 @@
   overflow: auto;
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: auto;
   border: 1px solid #dedede;
   border-top: none;
   background: #fff;
-  transition: all .5s ease;
+  transition: all 1s ease;
 }
 
 .zplayer .zplayer-list li {
@@ -230,6 +227,10 @@
   font-size: 11px;
   line-height: 1.5;
   cursor: pointer
+}
+
+.zplayer .zplayer-list li:first-child {
+  border-top: 2px dashed #3da0ff;
 }
 
 .zplayer .zplayer-list li:hover {
@@ -252,7 +253,7 @@
   z-index: 99999;
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;
-  transition: transform .5s ease;
+  transition: transform 1s ease;
   transform: translateX(0px);
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -275,8 +276,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 62px;
-  height: 62px
+  width: 60px;
+  height: 60px;
+  transition: all 1s ease;
 }
 
 .zplayer .zplayer-pic img {
@@ -288,6 +290,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  transition: all 1s ease;
   margin-left: 60px;
   padding: 4px 5px 0 10px;
   height: 60px
@@ -377,7 +380,7 @@
 }
 
 .zplayer .zplayer-info .zplayer-controller .zplayer-time {
-  margin-top: 12px;
+  margin-top: 10px;
   color: #999;
   font-size: 12px;
 }
@@ -401,7 +404,7 @@
   position: absolute;
   right: -5px;
   bottom: 17px;
-  z-index: 99;
+  /* z-index: 99; */
   display: none;
   width: 25px;
   height: 40px
@@ -476,33 +479,38 @@
 }
 
 .zplayer-withlrc .zplayer-pic {
-  height: 112px;
-  width: 112px;
+  height: 132px;
+  width: 132px;
 }
 
 .zplayer-withlrc .zplayer-info {
-  height: 112px;
-  margin-left: 112px;
+  height: 132px;
+  margin-left: 132px;
 }
 
 .zlrc {
   display: none;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(61, 160, 253, 0.1);
   z-index: 9999;
 }
 
 .zplayer-lrc {
   position: relative;
-  height: 40px;
+  height: 60px;
   text-align: center;
   overflow: hidden;
-  margin: 5px 20px;
+  margin: 10px;
+}
+
+.zplayer-fixed .zplayer-lrc {
+  height: 60px;
+  margin: 0 10px;
 }
 
 .zplayer-lrc:after,
 .zplayer .zplayer-lrc:before {
   position: absolute;
-  z-index: 1;
+  /* z-index: 1; */
   display: block;
   overflow: hidden;
   content: ' ';
@@ -515,8 +523,8 @@
   line-height: 20px;
   padding: 0;
   margin: 0;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
+  -webkit-transition: all 1s linear;
+  transition: all 1s linear;
   opacity: 0.3;
   height: 20px !important;
   overflow: hidden;
