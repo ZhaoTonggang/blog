@@ -11,8 +11,6 @@ function zplayer(option) {
 	for (const t in defaultOption) {
 		defaultOption.hasOwnProperty(t) && !p.hasOwnProperty(t) && (p[t] = defaultOption[t])
 	}
-	p.isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i),
-		p.isMobile && (p.autoPlay = !1);
 	var y, cur_m = 0,
 		random_cur_m = 0,
 		m = "",
@@ -71,7 +69,7 @@ function zplayer(option) {
 	var volInit = volumeCoocie == "" ? "100%" : volumeCoocie * 100 + "%";
 	var volIcon = volumeCoocie == "" ? "z-icon-volume-up" : (volumeCoocie >= 0.8 ? "z-icon-volume-up" : (volumeCoocie ==
 		0 ? "z-icon-volume-off" : "z-icon-volume-down"))
-	ht += p.isMobile ? '' : '<i class="volume-icon z-icon ' + volIcon +
+	ht += '<i class="volume-icon z-icon ' + volIcon +
 		'"></i><div class="zplayer-volume-bar"><div class="zplayer-volume-played" style="width:' + volInit +
 		'"><span class="zplayer-volume-thumb"></span></div></div>';
 	ht += p.lrcStart ? (p.showLrc ? '<i class="lrc-icon z-icon z-icon-list-alt"></i>' :
@@ -205,16 +203,14 @@ function zplayer(option) {
 	p.PauseButton.addEventListener("click", function () {
 		pause();
 	})
-	if (!p.isMobile) {
-		p.volumeIcon.addEventListener("click", function () {
-			p.audio.muted ? (p.audio.muted = !1,
-				p.volumeIcon.className = 0.8 <= p.audio.volume ? "volume-icon z-icon z-icon-volume-up" :
-				"volume-icon z-icon z-icon-volume-down",
-				updateBar("volumePlayed", p.audio.volume, "width")) : (p.audio.muted = !0,
-				p.volumeIcon.className = "volume-icon z-icon z-icon-volume-off",
-				updateBar("volumePlayed", 0, "width"))
-		})
-	}
+	p.volumeIcon.addEventListener("click", function () {
+		p.audio.muted ? (p.audio.muted = !1,
+			p.volumeIcon.className = 0.8 <= p.audio.volume ? "volume-icon z-icon z-icon-volume-up" :
+			"volume-icon z-icon z-icon-volume-down",
+			updateBar("volumePlayed", p.audio.volume, "width")) : (p.audio.muted = !0,
+			p.volumeIcon.className = "volume-icon z-icon z-icon-volume-off",
+			updateBar("volumePlayed", 0, "width"))
+	})
 	if (p.lrcStart) {
 		p.lrcIcon.addEventListener("click", function () {
 			this.classList.contains("lrc-hide") ? (p.element.classList.add("zplayer-withlrc"), this.classList
@@ -265,24 +261,20 @@ function zplayer(option) {
 		document.addEventListener("touchmove", te);
 		document.addEventListener("touchend", ta)
 	})
-	if (!p.isMobile) {
-		p.volumeThumb.addEventListener("mousedown", function () {
-			y = p.volumeBar.clientWidth;
-			document.addEventListener("mousemove", voe);
-			document.addEventListener("mouseup", voa)
-		})
-	}
-	if (!p.isMobile) {
-		p.volumeBar.addEventListener("click", function (e) {
-			var a = e || window.event;
-			y = p.volumeBar.clientWidth;
-			i = (a.clientX - t(p.volumeBar)) / y;
-			p.volumeIcon.className = 0.8 <= i ? "volume-icon z-icon z-icon-volume-up" : (i == 0 ?
-				"volume-icon z-icon z-icon-volume-off" : "volume-icon z-icon z-icon-volume-down")
-			p.audio.volume = i;
-			updateBar("volumePlayed", i, "width");
-		})
-	};
+	p.volumeThumb.addEventListener("mousedown", function () {
+		y = p.volumeBar.clientWidth;
+		document.addEventListener("mousemove", voe);
+		document.addEventListener("mouseup", voa)
+	})
+	p.volumeBar.addEventListener("click", function (e) {
+		var a = e || window.event;
+		y = p.volumeBar.clientWidth;
+		i = (a.clientX - t(p.volumeBar)) / y;
+		p.volumeIcon.className = 0.8 <= i ? "volume-icon z-icon z-icon-volume-up" : (i == 0 ?
+			"volume-icon z-icon z-icon-volume-off" : "volume-icon z-icon z-icon-volume-down")
+		p.audio.volume = i;
+		updateBar("volumePlayed", i, "width");
+	})
 	p.listButton.addEventListener("click", function (e) {
 		(p.playerList.style.maxHeight == "" || p.playerList.style.maxHeight == "0px") ? p.playerList.style
 			.maxHeight = p.listMaxHeight + "px": p.playerList.style.maxHeight = "0px"
@@ -532,7 +524,7 @@ function zplayer(option) {
 			e < p.lrc[p.lrcIndex][0] || (p.lrcIndex == p.lrc.length - 1 ? false : e >= p.lrc[p.lrcIndex + 1][0]))
 			for (var a = 0; a < p.lrc.length; a++)
 				e >= p.lrc[a][0] && (!p.lrc[a + 1] || e < p.lrc[a + 1][0]) && (p.lrcIndex = a,
-					p.lrcContents.style.transform = "translateY(" + 20 * -p.lrcIndex + "px)",
+					p.lrcContents.style.transform = "translateY(" + (20 * -p.lrcIndex + 20) + "px)",
 					p.lrcContents.getElementsByClassName("zplayer-lrc-current")[0].classList.remove(
 						"zplayer-lrc-current"),
 					p.lrcContents.getElementsByTagName("p")[a].classList.add("zplayer-lrc-current"))
