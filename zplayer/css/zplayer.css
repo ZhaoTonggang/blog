@@ -303,7 +303,7 @@
 }
 
 .zplayer .zplayer-info .zplayer-music .zplayer-music-text {
-  width: calc(100% - 55px);
+  width: calc(100% - 60px);
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
