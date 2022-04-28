@@ -172,13 +172,13 @@
   background: rgba(255, 0, 0, .4) !important
 }
 
-.zplayer .zplayer-content {
+.zplayer-content {
   float: left;
   width: 100%;
   background: #fff;
 }
 
-.zplayer .ss-btn {
+.ss-btn {
   float: right;
   width: 20px;
   height: 60px;
@@ -186,7 +186,7 @@
   cursor: pointer;
 }
 
-.zplayer .ss-btn i {
+.ss-btn i {
   margin-top: 3px;
   padding: 0 5px;
   color: #fff;
@@ -194,7 +194,7 @@
   line-height: 60px
 }
 
-.zplayer .zplayer-menu-bars {
+.zplayer-menu-bars {
   float: right;
   color: #6e6e6e;
   font-size: 15px;
@@ -205,7 +205,7 @@
   right: 5px;
 }
 
-.zplayer .zplayer-list {
+.zplayer-list {
   clear: both;
   overflow: auto;
   margin: 0;
@@ -217,7 +217,7 @@
   transition: all 1s ease;
 }
 
-.zplayer .zplayer-list li {
+.zplayer-list li {
   overflow: hidden;
   padding: 3px 20px;
   color: #878787;
@@ -229,11 +229,11 @@
   cursor: pointer
 }
 
-.zplayer .zplayer-list li:first-child {
+.zplayer-list li:first-child {
   border-top: 2px dashed #3da0ff;
 }
 
-.zplayer .zplayer-list li:hover {
+.zplayer-list li:hover {
   color: #716e6e;
   font-weight: 700
 }
@@ -245,7 +245,7 @@
   font-weight: bold
 }
 
-.zplayer .display-none {
+.display-none {
   display: none
 }
 
@@ -259,6 +259,8 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  line-height: normal;
+  letter-spacing: 0;
 }
 
 .zplayer-fixed .zplayer {
@@ -272,7 +274,7 @@
   cursor: default !important
 }
 
-.zplayer .zplayer-pic {
+.zplayer-pic {
   position: absolute;
   top: 0;
   left: 0;
@@ -281,12 +283,12 @@
   transition: all 1s ease;
 }
 
-.zplayer .zplayer-pic img {
+.zplayer-pic img {
   width: 100%;
   height: 100%
 }
 
-.zplayer .zplayer-info {
+.zplayer-info {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -296,13 +298,13 @@
   height: 60px
 }
 
-.zplayer .zplayer-info .zplayer-music {
+.zplayer-info .zplayer-music {
   overflow: hidden;
   margin-bottom: 5px;
   text-overflow: ellipsis;
 }
 
-.zplayer .zplayer-info .zplayer-music .zplayer-music-text {
+.zplayer-info .zplayer-music .zplayer-music-text {
   width: calc(100% - 60px);
   overflow: hidden;
   white-space: nowrap;
@@ -315,24 +317,24 @@
   height: 20px;
 }
 
-.zplayer .zplayer-info .zplayer-music .zplayer-title {
+.zplayer-info .zplayer-music .zplayer-title {
   font-size: 14px
 }
 
-.zplayer .zplayer-info .zplayer-music .zplayer-author {
+.zplayer-info .zplayer-music .zplayer-author {
   color: #666;
   font-size: 12px
 }
 
-.zplayer .zplayer-info .zplayer-controller {
+.zplayer-info .zplayer-controller {
   position: relative
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-bar-wrap {
+.zplayer-info .zplayer-controller .zplayer-bar-wrap {
   padding: 0 5px;
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-bar-wrap .zplayer-bar {
+.zplayer-info .zplayer-controller .zplayer-bar-wrap .zplayer-bar {
   position: relative;
   width: 100%;
   height: 2px;
@@ -340,7 +342,7 @@
   cursor: pointer !important
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-bar-wrap .zplayer-bar .zplayer-loaded {
+.zplayer-info .zplayer-controller .zplayer-bar-wrap .zplayer-bar .zplayer-loaded {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -351,8 +353,8 @@
   transition: all .5s ease
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-bar-wrap .zplayer-bar .zplayer-played,
-.zplayer .zplayer-volume-played {
+.zplayer-info .zplayer-controller .zplayer-bar-wrap .zplayer-bar .zplayer-played,
+.zplayer-volume-played {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -361,8 +363,8 @@
   background: #3da0ff;
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-bar-wrap .zplayer-bar .zplayer-played .zplayer-thumb,
-.zplayer .zplayer-volume-thumb {
+.zplayer-info .zplayer-controller .zplayer-bar-wrap .zplayer-bar .zplayer-played .zplayer-thumb,
+.zplayer-volume-thumb {
   position: absolute;
   top: 0;
   right: 5px;
@@ -378,34 +380,34 @@
   cursor: pointer !important
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-bar-wrap .zplayer-bar .zplayer-played .zplayer-thumb:hover,
-.zplayer .zplayer-volume-thumb:hover {
+.zplayer-info .zplayer-controller .zplayer-bar-wrap .zplayer-bar .zplayer-played .zplayer-thumb:hover,
+.zplayer-volume-thumb:hover {
   background: #3da0ff
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-time {
+.zplayer-info .zplayer-controller .zplayer-time {
   margin-top: 10px;
   color: #999;
   font-size: 12px;
   font-weight: bold;
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-time .z-icon {
+.zplayer-info .zplayer-controller .zplayer-time .z-icon {
   margin-left: 5px;
   width: 15px;
   font-size: 15px;
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-volume-wrap {
+.zplayer-info .zplayer-controller .zplayer-volume-wrap {
   display: inline-block;
   cursor: pointer !important
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-volume-wrap:hover .zplayer-volume-bar-wrap {
+.zplayer-info .zplayer-controller .zplayer-volume-wrap:hover .zplayer-volume-bar-wrap {
   display: block
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-volume-wrap .zplayer-volume-bar-wrap {
+.zplayer-info .zplayer-controller .zplayer-volume-wrap .zplayer-volume-bar-wrap {
   position: absolute;
   right: -5px;
   bottom: 17px;
@@ -414,7 +416,7 @@
   height: 40px
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-volume-wrap .zplayer-volume-bar-wrap .zplayer-volume-bar {
+.zplayer-info .zplayer-controller .zplayer-volume-wrap .zplayer-volume-bar-wrap .zplayer-volume-bar {
   position: absolute;
   right: 10px;
   bottom: 0;
@@ -423,7 +425,7 @@
   background: #aaa
 }
 
-.zplayer .zplayer-info .zplayer-controller .zplayer-volume-wrap .zplayer-volume-bar-wrap .zplayer-volume-bar .zplayer-volume {
+.zplayer-info .zplayer-controller .zplayer-volume-wrap .zplayer-volume-bar-wrap .zplayer-volume-bar .zplayer-volume {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -431,28 +433,28 @@
   background: #3da0ff
 }
 
-.zplayer .zplayer-menu-bars i {
+.zplayer-menu-bars i {
   cursor: pointer;
   margin-left: 5px;
 }
 
-.zplayer .zplayer-menu-volume {
+.zplayer-menu-volume {
   float: right;
   display: inline-block
 }
 
-.zplayer .zplayer-menu-bars i,
-.zplayer .zplayer-menu-volume i {
+.zplayer-menu-bars i,
+.zplayer-menu-volume i {
   cursor: pointer;
   color: #666;
 }
 
-.zplayer .zplayer-menu-bars i:hover,
-.zplayer .zplayer-menu-volume i:hover {
+.zplayer-menu-bars i:hover,
+.zplayer-menu-volume i:hover {
   color: #000
 }
 
-.zplayer .zplayer-volume-bar {
+.zplayer-volume-bar {
   position: relative;
   width: 100%;
   height: 2px;
@@ -460,7 +462,7 @@
   cursor: pointer !important
 }
 
-.zplayer .zplayer-volume-bar {
+.zplayer-volume-bar {
   position: relative;
   display: inline-block;
   margin-top: -3px;
@@ -472,7 +474,7 @@
   cursor: pointer !important;
 }
 
-.zplayer .lrc-hide {
+.lrc-hide {
   opacity: 0.5;
 }
 
@@ -582,13 +584,13 @@
   margin-left: 60px;
 }
 
-.zplayer-fixed .zplayer .zplayer-content {
+.zplayer-fixed .zplayer-content {
   border-left: none;
   border-right: none;
   width: 270px;
 }
 
-.zplayer-fixed .zplayer .zplayer-list {
+.zplayer-fixed .zplayer-list {
   border-bottom: none;
   width: 270px;
 }
