@@ -84,9 +84,6 @@ class EmulatorJS {
             'amiga': 'puae',
             'c64': 'vice_x64'
         }
-        if (this.isSafari && this.isMobile && this.getCore(true) === "n64") {
-            return "parallel_n64";
-        }
         return options[core] || core;
     }
     extensions = {
@@ -1560,6 +1557,7 @@ class EmulatorJS {
         })
         
         
+        let paddingSet = false;
         //Now add buttons
         const addButton = (title, image, callback, element, both) => {
             const button = this.createElement("button");
@@ -1570,7 +1568,7 @@ class EmulatorJS {
             svg.innerHTML = image;
             const text = this.createElement("span");
             text.innerText = this.localization(title);
-            if (title == "Enter Fullscreen" || title == "Exit Fullscreen") text.classList.add("ejs_menu_text_right");
+            if (paddingSet) text.classList.add("ejs_menu_text_right");
             text.classList.add("ejs_menu_text");
             
             button.classList.add("ejs_menu_button");
@@ -1726,6 +1724,7 @@ class EmulatorJS {
         const spacer = this.createElement("span");
         spacer.classList.add("ejs_menu_bar_spacer");
         this.elements.menu.appendChild(spacer);
+        paddingSet = true;
         
         const volumeSettings = this.createElement("div");
         volumeSettings.classList.add("ejs_volume_parent");
@@ -1788,6 +1787,16 @@ class EmulatorJS {
         }
 
         this.elements.menu.appendChild(volumeSettings);
+
+        const contextMenuButton = addButton("Context Menu", '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>', () => {
+            if (this.elements.contextmenu.style.display == "none") {
+                this.elements.contextmenu.style.display = "block";
+                this.elements.contextmenu.style.left = (getComputedStyle(this.elements.parent).width.split("px")[0]/2 - getComputedStyle(this.elements.contextmenu).width.split("px")[0]/2)+"px";
+                this.elements.contextmenu.style.top = (getComputedStyle(this.elements.parent).height.split("px")[0]/2 - getComputedStyle(this.elements.contextmenu).height.split("px")[0]/2)+"px";
+            } else {
+                this.elements.contextmenu.style.display = "none";
+            }
+        });
         
         this.settingParent = this.createElement("div");
         this.settingsMenuOpen = false;
@@ -1893,6 +1902,7 @@ class EmulatorJS {
             playPause: [pauseButton, playButton],
             restart: [restartButton],
             settings: [settingButton],
+            contextMenu: [contextMenuButton],
             fullscreen: [enter, exit],
             saveState: [saveState],
             loadState: [loadState],
@@ -1911,6 +1921,7 @@ class EmulatorJS {
                 pauseButton.style.display = "none";
                 playButton.style.display = "none";
             }
+            if (this.config.buttonOpts.contextMenuButton === false) contextMenuButton.style.display = "none"
             if (this.config.buttonOpts.restart === false) restartButton.style.display = "none"
             if (this.config.buttonOpts.settings === false) settingButton[0].style.display = "none"
             if (this.config.buttonOpts.fullscreen === false) {
