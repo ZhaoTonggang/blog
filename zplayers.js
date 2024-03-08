@@ -1,10 +1,10 @@
-var zp3 = new zplayer({
+let zp3 = new zplayer({
 	element: document.getElementById("player3"),
-	autoPlay: 1,
+// 	autoPlay: 0,
 	/*是否开启自动播放,默认false*/
 	lrcStart: 1,
 	/*是否开启歌词功能 ，默认false（为true时musics集合中需要传入lrc字段。）*/
-	showLrc: 1,
+// 	showLrc: 1,
 	/*开启歌词功能后是否展示歌词内容 ，默认false*/
 	fixed: 1,
 	/*是否固定在底部，默认false*/
