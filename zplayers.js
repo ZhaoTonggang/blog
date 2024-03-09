@@ -1,6 +1,6 @@
 let zp3 = new zplayer({
 	element: document.getElementById("player3"),
-// 	autoPlay: 0,
+	autoPlay: 0,
 	/*是否开启自动播放,默认false*/
 	lrcStart: 1,
 	/*是否开启歌词功能 ，默认false（为true时musics集合中需要传入lrc字段。）*/
