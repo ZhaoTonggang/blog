@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>CCTV7</title>
+	</head>
+	<body>
+		<script>
+			// 使用严格模式
+			"use strict";
+			/**
+			 * 获取指定ID的电视直播流地址
+			 * @returns {Promise<string|null>} 播放流地址
+			 */
+			async function getTVChannelStreamUrl() {
+				try {
+					// 发送GET请求
+					const response = await fetch(
+						'http://api.junhao.mil.cn/cmsback/api/micro/live/seat/findPage?articleId=5234612', {
+							headers: {
+								"Tenantid": "b81ab1497ae1133dbc41e584912d77aa "
+							}
+						});
+					if (!response.ok) throw new Error('HTTP状态码: ' + response.status);
+					let data = await response.json();
+					data = data['data']['pageRecords'][0]['livePath'];
+					// 返回数据
+					if (data) {
+						return window.location.href = data;
+					}
+					return alert('数据不存在');
+				} catch (error) {
+					return alert('错误: ' + error.message);
+				}
+			}
+			// 程序执行
+			getTVChannelStreamUrl();
+		</script>
+	</body>
+</html>
