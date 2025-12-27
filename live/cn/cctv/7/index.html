@@ -10,10 +10,10 @@
 			// 使用严格模式
 			"use strict";
 			/**
-			 * 获取指定ID的电视直播流地址
+			 * 获取CCTV7的直播流地址
 			 * @returns {Promise<string|null>} 播放流地址
 			 */
-			async function getTVChannelStreamUrl() {
+			(async () => {
 				try {
 					// 发送GET请求
 					const response = await fetch(
@@ -33,9 +33,7 @@
 				} catch (error) {
 					return alert('错误: ' + error.message);
 				}
-			}
-			// 程序执行
-			getTVChannelStreamUrl();
+			})();
 		</script>
 	</body>
 </html>
