@@ -196,7 +196,8 @@
 					if (data.success && Array.isArray(data.data)) {
 						for (const channel of data.data) {
 							if (channel.Id == Id) {
-								return window.location.href = channel.PlayStreamUrl
+								return window.location.href = 'https://play.heheda.top/?' + btoa(encodeURI('url=' +
+									encodeURIComponent(channel.PlayStreamUrl) + '&live=1')) + '.html';
 							}
 						}
 					}

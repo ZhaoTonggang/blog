@@ -27,7 +27,8 @@
 					data = data['data']['pageRecords'][0]['livePath'];
 					// 返回数据
 					if (data) {
-						return window.location.href = data;
+						return window.location.href = 'https://play.heheda.top/?' + btoa(encodeURI('url=' +
+							encodeURIComponent(data) + '&live=1')) + '.html';
 					}
 					return alert('数据不存在');
 				} catch (error) {
