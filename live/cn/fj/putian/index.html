@@ -10,30 +10,30 @@
 			// 使用严格模式
 			"use strict";
 			/**
-			 * 获取指定ID的电视直播流地址
-			 * @param {string|number} Id 频道ID
+			 * 获取福建莆田的电视直播流地址
 			 * @returns {Promise<string|null>} 播放流地址
 			 */
-			async function getTVChannelStreamUrl(Id) {
+			(async () => {
 				try {
+					// 获取传入参数
+					const urlParams = new URLSearchParams(window.location.search);
+					const idFromUrl = urlParams.get('id') || 4;
 					// 发送GET请求
-					const response = await fetch('https://mapi.ptbtv.com/api/v1/channel.php?channel_id=' + Id);
+					const response = await fetch('https://mapi.ptbtv.com/api/v1/channel.php?channel_id=' + idFromUrl);
 					if (!response.ok) throw new Error('HTTP状态码: ' + response.status);
 					let data = await response.json();
 					data = data[0]['m3u8'];
 					// 返回数据
 					if (data) {
-						return window.location.href = data;
+						return window.location.href = 'https://play.heheda.top/?' + btoa(encodeURI('url=' +
+							encodeURIComponent(
+								data) + '&live=1')) + '.html';
 					}
 					return alert('数据不存在');
 				} catch (error) {
 					return alert('错误: ' + error.message);
 				}
-			}
-			// 程序执行
-			const urlParams = new URLSearchParams(window.location.search);
-			const idFromUrl = urlParams.get('id') || 4;
-			getTVChannelStreamUrl(idFromUrl);
+			})();
 		</script>
 	</body>
 </html>
