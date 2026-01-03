@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>新疆兵团卫视</title>
+	</head>
+	<body>
+		<script>
+			// 使用严格模式
+			"use strict";
+			/**
+			 * 获取新疆兵团卫视的电视直播流地址
+			 * @param {string|number} id 频道ID
+			 * @returns {Promise<string|null>} 播放流地址
+			 */
+			(async () => {
+				// 1. 获取当前日期对象
+				const currentDate = new Date();
+				// 2. 获取年、月、日（注意月份的特殊性：JavaScript月份是0-11，需要+1）
+				const year = currentDate.getFullYear(); // 获取完整年份（4位数字）
+				let month = currentDate.getMonth() + 1; // 获取月份（转换为1-12）
+				let day = currentDate.getDate(); // 获取日期（1-31）
+				// 3. 补零处理：确保月份和日期都是两位数（小于10时前面加0）
+				const file = (v) => {
+					return v < 10 ? '0' + v : v;
+				}
+				// 发送GET请求
+				try {
+					const response = await fetch(
+						'https://api.btzx.com.cn/mobileinf/rest/cctv/videolivelist/dayWeb?json=' + encodeURI(
+							"{'id':'TvCh1540979167111228','day':'" + year + '-' + file(month) + '-' + file(day) +
+							"'}"));
+					if (!response.ok) throw new Error('HTTP状态码: ' + response.status);
+					let data = await response.json();
+					data = data['videolivelist'][0]['urlhd'];
+					// 返回数据
+					if (data) {
+						return window.location.href = 'https://play.heheda.top/?' + btoa(encodeURI('url=' +
+							encodeURIComponent(data) + '&live=1')) + '.html';
+					}
+					return alert('数据不存在');
+				} catch (error) {
+					return alert('捕获错误: ' + error.message);
+				}
+			})();
+		</script>
+	</body>
+</html>
